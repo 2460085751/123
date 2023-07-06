@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>户资料更改</title>
+  <style>
+    .10{
+       text-align: right;
+    }
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #337ab7;
+    }
+    .profile-wrapper {
+      text-align: center;
+    }
+    .profile-pic {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      overflow: hidden;
+      display: inline-block;
+    }
+    .profile-pic img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .btn-change {
+      display: block;
+      margin: 0 auto;
+      padding: 10px 20px;
+      background-color: #4caf50;
+      color: #ffffff;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    
+    .btn-change:focus,
+    .btn-change:hover {
+      background-color: #45a049;
+    }
+
+    .1 {
+      display: block;
+      margin: 0 auto;
+      padding: 10px 20px;
+      background-color: #337ab7;
+      color: #ffffff;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    
+    .custom-button {
+  display: block;
+  margin: 0 auto;
+  padding: 10px 20px;
+  background-color: #337ab7;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.custom-button:focus,
+.custom-button:hover {
+  background-color: #286090;
+}
+    div{
+      text-align: center;
+     background-color:aqua;
+     padding: 20px;
+     border-radius:20px;
+     line-height: 10px;
+     box-shadow: 0 2px 8px rgba(0, 0, 0, 0);
+    }
+
+    /* 外部容器 */
+.container {
+  margin: 20px;
+  padding: 20px;
+  background-color: #f2f2f2;
+  border-radius: 10px;
+  width: 300px;
+}
+
+/* 文本域 */
+.textarea {
+  width: 100%;
+  height: 120px;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  resize: none;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  color: #333333;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+/* 悬停效果 */
+.textarea:hover {
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+}
+
+/* 激活效果 */
+.textarea:focus {
+  outline: none;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+}
+  </style>
+</head>
+<body>
+  <div class="container">
+        <div class="module">
+  <div>
+  <div class="profile-wrapper">
+    <h1>户资料更改</h1>
+    <div class="profile-pic" id="current-profile-pic">
+      <img src="1.jpg" alt="当前头像">
+    </div>
+    <button class="btn-change" onclick="changeProfilePic()">更换头像</button>
+    <div>
+    <label for="username">姓名:</label>
+    <br><br>
+    <input type="text" placeholder=张雨乐 id="username" ><br><br>
+    
+    <label for="gender">性别:</label>
+    <label><input type="radio" name="gender" value="male" checked> 男</label>
+    <label><input type="radio" name="gender" value="female"> 女</label><br><br>
+    
+    <label for="birthday">生日:</label><br><br>
+    <select id="birthday-year">
+      <option value="" >年份</option><br><br>
+      <!-- 添加年份选项 -->
+    </select>
+    <select id="birthday-month">
+      <option value="">月份</option>
+      <!-- 添加月份选项 -->
+     </select>
+    <select id="birthday-day">
+      <option value="">日期</option>
+      <!-- 添加日期选项 -->
+    </select><br><br>
+    
+    <label for="location">所在地:</label><br><br>
+    <input type="text" id="location" placeholder=河北省保定市定州市><br><br>
+    
+    <label for="school">学校:</label><br><br>
+    <input type="text" id="school" placeholder=河北科技工程职业技术大学    ><br><br>
+
+     <label for="bio">简介:</label><br><br>
+    <textarea class="textarea" ></textarea><br><br>
+    
+    <button id="saveBtn" class="custom-button" type="button" onclick="saveProfile()">保存</button>
+  </div>
+  </div>
+  </div>
+   </div>
+    </div>
+    <script>
+      function changeProfilePic() {
+        var profilePic = prompt("请输入新头像图片链接:");
+        
+        if (profilePic) {
+          var imgElem = document.createElement("img");
+          imgElem.src = profilePic;
+          imgElem.alt = "新头像";
+          
+          var currentProfilePic = document.getElementById("current-profile-pic");
+          currentProfilePic.innerHTML = ""; // 清空原头像
+          currentProfilePic.appendChild(imgElem);
+        }
+      }
+
+
+      function saveProfile() {
+      // 获取用户输入的资料
+      var profilePicture = document.getElementById('profile-picture').value;
+      var username = document.getElementById('username').value;
+      var bio = document.getElementById('bio').value;
+      var gender = document.querySelector('input[name="gender"]:checked').value;
+      var birthdayYear = document.getElementById('birthday-year').value;
+      var birthdayMonth = document.getElementById('birthday-month').value;
+      var birthdayDay = document.getElementById('birthday-day').value;
+      var location = document.getElementById('location').value;
+      var school = document.getElementById('school').value;
+      
+      // 执行保存逻辑
+      // 此处省略保存逻辑，你可以将用户资料发送到服务器进行保存，或在客户端进行更新操作
+      
+      // 弹出提示框，表示保存成功
+      alert("用户资料已保存");
+    }
+
+
+   // 动态生成年份选项
+    var yearSelect = document.getElementById('birthday-year');
+    var currentYear = new Date().getFullYear();
+    for (var i = currentYear; i >= currentYear - 100; i--) {
+      var option = document.createElement('option');
+      option.value = i;
+      option.text = i;
+      yearSelect.appendChild(option);
+      
+    }
+
+    // 动态生成月份选项
+    var monthSelect = document.getElementById('birthday-month');
+    for (var i = 1; i <= 12; i++) {
+      var option = document.createElement('option');
+      option.value = i;
+      option.text = i;
+      monthSelect.appendChild(option);
+    }
+
+    // 动态生成日期选项
+    var daySelect = document.getElementById('birthday-day');
+    yearSelect.addEventListener('change', updateDays);
+    monthSelect.addEventListener('change', updateDays);
+    function updateDays() {
+      daySelect.innerHTML = ''; // 清空原有的日期选项
+      var year = yearSelect.value;
+      var month = monthSelect.value;
+      if (year !== '' && month !== '') {
+        var daysInMonth = new Date(year, month, 0).getDate();
+        for (var i = 1; i <= daysInMonth; i++) {
+          var option = document.createElement('option');
+          option.value = i;
+          option.text = i;
+          daySelect.appendChild(option);
+        
+        }
+      }
+    }
+
+    </script>
+    <!-- 盒子类名（class）叫 “container（自定义类名）” -->
+    <div class="10" aria-describedby="">
+    <video src="q.mp4" width="380" height="500" controls autoplay loop></video><br>
+    <img src="y.jpg" width="150" alt="">
+    <img src="./w.jpg" width="380" alt="" >
+    <img src="t.jpg" width="150" alt=""><br>
+    <img src="i.jpg" width="150" alt="">
+     <img src="e.jpg" width="300" alt="">
+      <img src="r.jpg" width="150" alt="">
+    </div><br>
+</body>
+</html>
